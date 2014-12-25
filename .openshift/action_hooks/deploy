@@ -1,0 +1,43 @@
+#!/bin/bash
+
+set -x
+
+if [ ! -d $OPENSHIFT_DATA_DIR/m2/repository ]
+        then
+                cd $OPENSHIFT_DATA_DIR
+				mkdir m2/repository                
+fi
+
+if [ ! -d $OPENSHIFT_DATA_DIR/logs ]
+        then
+                cd $OPENSHIFT_DATA_DIR
+				mkdir logs
+fi
+
+if [ ! -d $OPENSHIFT_DATA_DIR/jdk8 ]
+        then
+                cd $OPENSHIFT_DATA_DIR
+                wget http://download.oracle.com/otn-pub/java/jdk/8u25-b17/jdk-8u25-linux-x64.tar.gz
+                tar xvf *.tar.gz
+                rm -f *.tar.gz
+                mv jdk-8u25-linux-x64 jdk8
+fi
+
+if [ ! -d $OPENSHIFT_DATA_DIR/maven ]
+        then
+                cd $OPENSHIFT_DATA_DIR
+                wget http://apache.sunsite.ualberta.ca/maven/maven-3/3.2.5/binaries/apache-maven-3.2.5-bin.tar.gz
+                tar xvf *.tar.gz
+                rm -f *.tar.gz
+                mv apache-maven-* maven
+fi
+
+
+cd $OPENSHIFT_REPO_DIR
+export MAVEN_HOME=$OPENSHIFT_DATA_DIR/maven
+export M2=$MAVEN_HOME/bin
+export MAVEN_OPTS="-Xms384m -Xmx412m"
+export JAVA_HOME=$OPENSHIFT_DATA_DIR/jdk8
+export PATH=$JAVA_HOME/bin:$M2:$PATH
+
+mvn -s settings.xml clean install
