@@ -20,7 +20,7 @@ if [ ! -d $OPENSHIFT_DATA_DIR/jdk8 ]
                 wget http://download.oracle.com/otn-pub/java/jdk/8u25-b17/jdk-8u25-linux-x64.tar.gz
                 tar xvf *.tar.gz
                 rm -f *.tar.gz
-                mv jdk-8u25-linux-x64 jdk8
+                mv jdk* jdk8
 fi
 
 if [ ! -d $OPENSHIFT_DATA_DIR/maven ]
