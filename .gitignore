@@ -1,3 +1,9 @@
+.settings
+.project
+.classpath
+build
+bin
+dist
 target
 *.iml
 *.ipr
