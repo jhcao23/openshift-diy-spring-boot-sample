@@ -50,7 +50,7 @@ The initial deployment (build and application startup) will take some time (up t
 	Tomcat started on port(s): 8080/http
 	Started Application in 125.511 seconds
 
-You can now browse to: `http://boot-<namespace>.rhcloud.com/manage/health` and you should see:
+You can now browse to: `http://boot-{namespace}.rhcloud.com/manage/health` and you should see:
 
 	{"status":"UP","diskSpace":{"status":"UP","free":118865248256,"threshold":10485760},"db":{"status":"UP","database":"MySQL","hello":1}}
 
@@ -66,11 +66,11 @@ And attaching Jenkins client to the application:
 
 	rhc cartridge add jenkins-client --app boot
 
-You can now browse to: http://ci-<namespace>.rhcloud.com and login with the credentials provided. When you make next changes and push them, the build will be triggered by Jenkins:
+You can now browse to: http://ci-{namespace}.rhcloud.com and login with the credentials provided. When you make next changes and push them, the build will be triggered by Jenkins:
 
 	remote: Executing Jenkins build.
 	remote:
-	remote: You can track your build at `https://ci-<namespace>.rhcloud.com/job/boot-build`
+	remote: You can track your build at https://ci-{namespace}.rhcloud.com/job/boot-build
 	remote:
 	remote: Waiting for build to schedule.........
 
